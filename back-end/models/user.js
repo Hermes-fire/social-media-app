@@ -5,6 +5,11 @@ const { v1: uuidv1} = require('uuid');
 
 const userSchema = new mongoose.Schema(
    {
+        _id: {
+            type: String,
+            required: true,
+            maxlength: 32
+        },
        name: {
            type: String,
            trim: true,
@@ -21,21 +26,9 @@ const userSchema = new mongoose.Schema(
            type: String,
            required: true
        },
-       about: {
-           type: String,
-           trim: true
-       },
        salt: String,
-       role: {
-           type: Number,
-           default: 0
-       },
-       history: {
-           type: Array,
-           default: []
-       }
    },
-   { timestamps: true }
+   { timestamps: true , _id: false }
 );
 // virtual field
 userSchema

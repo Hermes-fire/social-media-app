@@ -6,9 +6,10 @@ const router = express.Router()
 const {createUid, readUid, uidById, signup, signin, signout, requireSignin} = require('../controllers/auth')
 const {userSignupValidator} = require('../validator')
 
-
+//check uid
 router.post('/createUID', createUid)
 router.get('/readUID/:uid', readUid)
+
 
 router.post('/signup', userSignupValidator, signup)
 router.post('/signin', signin)
