@@ -45,3 +45,29 @@ exports.errorHandler = error => {
 
     return message;
 };
+
+exports.signupEH = error => {
+    let message = "";
+
+    if (error.code) {
+        switch (error.code) {
+            case 11000:
+                if(error._id){
+                    console.log('err')
+                    message = 'user already signed up'
+                }
+            case 11001:
+                message = uniqueMessage(error);
+                break;
+            default:
+                message = "Something went wrong";
+        }
+    } else {
+        for (let errorName in error.errorors) {
+            if (error.errorors[errorName].message)
+                message = error.errorors[errorName].message;
+        }
+    }
+
+    return message;
+};

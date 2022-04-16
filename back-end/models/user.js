@@ -7,8 +7,7 @@ const userSchema = new mongoose.Schema(
    {
         _id: {
             type: String,
-            required: true,
-            maxlength: 32
+            maxlength: 32,
         },
        name: {
            type: String,
@@ -30,6 +29,7 @@ const userSchema = new mongoose.Schema(
    },
    { timestamps: true , _id: false }
 );
+
 // virtual field
 userSchema
    .virtual('password')

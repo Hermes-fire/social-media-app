@@ -1,7 +1,7 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken') //to generate signed token
 const expressJwt = require('express-jwt') //for authorization check
-const {errorHandler} = require('../helpers/dbErrorHandler')
+const {errorHandler, signupEH} = require('../helpers/dbErrorHandler')
 const { validationResult } = require('express-validator/check');
 const user = require('../models/user');
 const uid = require('../models/uid');
@@ -48,7 +48,7 @@ exports.signup = (req,res) => {
     user.save((err, user)=> {
         if(err) {
             return res.status(400).json({
-                error: errorHandler(err)
+                error: signupEH(err)
             })
         }
         user.salt = undefined
